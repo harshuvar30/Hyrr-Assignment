@@ -23,13 +23,12 @@ const Home = () => {
 //   const loadMore = () => setPage((prev) => prev + 1);
 
   return (
-    <div className="flex gap-10 lg:gap-20 justify-between pt-2 mb-6 mx-4">
-      <Navbar />
-      <main className="flex-grow flex flex-col items-center justify-center p-6 w-full">
+    <div className=" gap-10 lg:gap-20 justify-between pt-2 mb-6 mx-4">
+      <main className=" flex flex-col items-center justify-center p-6 w-full">
         <h2 className="text-4xl font-bold text-gray-800 text-center md:text-5xl">
           Welcome to MelodyVerse
         </h2>
-        <div className="mt-8 w-full max-w-3xl text-center">
+        <div className="mt-8 w-full text-center">
           <p className="text-gray-600 mt-6">
             Need to login before seeing the posts.
           </p>
