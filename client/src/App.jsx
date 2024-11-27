@@ -1,10 +1,17 @@
-import React from 'react';
-import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
+import React from "react";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import PostList from "./pages/PostList.jsx";
+import Signup from "./pages/SignUP.jsx";
 
+const App = () => {
+  return (
+    <Router>
+      <Routes>
+        <Route path="/" element={<Signup />} />
+        <Route path="/posts" element={<PostList />} />
+      </Routes>
+    </Router>
+  );
+};
 
-function App() {
-
-  return (<></> )
-}
-
-export default App
+export default App;
