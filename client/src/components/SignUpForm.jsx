@@ -1,11 +1,11 @@
 import React from "react";
 import { useForm } from "react-hook-form";
-import { zodResolver } from "@hookform/resolvers/zod";
 import { signupSchema } from "../utils/zodSchemas";
 import { registerUser } from "../services/api";
-import InputField from "./InputField";
+import InputField from "./InputField.jsx";
+import {zodResolver} from '@hookform/resolvers/zod'
 
-export const SignUpForm = ({ onSuccess }) => {
+ const SignUpForm = ({ onSuccess }) => {
   const {
     register,
     handleSubmit,
@@ -102,3 +102,5 @@ export const SignUpForm = ({ onSuccess }) => {
     </form>
   );
 };
+
+export default SignUpForm

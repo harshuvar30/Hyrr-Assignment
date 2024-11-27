@@ -1,7 +1,7 @@
 import React from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import PostList from "./pages/PostList.jsx";
-import Signup from "./pages/SignUP.jsx";
+import Signup from "./pages/SignUp.jsx";
 
 const App = () => {
   return (

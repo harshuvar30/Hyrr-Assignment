@@ -1,5 +1,5 @@
 import React from "react";
-import SignupForm from "../components/SignUpForm";
+import SignUpForm from "../components/SignUpForm.jsx"
 import { useNavigate } from "react-router-dom";
 
 const Signup = () => {
@@ -11,7 +11,7 @@ const Signup = () => {
 
   return (
     <div className="flex items-center justify-center min-h-screen bg-gray-100">
-      <SignupForm onSuccess={handleSuccess} />
+      <SignUpForm onSuccess={handleSuccess} />
     </div>
   );
 };
