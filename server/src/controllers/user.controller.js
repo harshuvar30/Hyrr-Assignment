@@ -18,13 +18,13 @@ const registerUser = asyncHandler(async (req, res) => {
     // return response
     console.log(req.body);
   
-    const { fullname, email, username, password } = req.body;
+    const { name, email, username, password } = req.body;
     console.log("email: ", email);
-    // if(fullname === ""){
-    //     throw new ApiError(400,"fullname is required")
+    // if(name === ""){
+    //     throw new ApiError(400,"name is required")
     // }
     if (
-      [fullname, email, username, password].some((field) => {
+      [email, username, password].some((field) => {
         field?.trim() === "";
       })
     ) {
@@ -39,19 +39,22 @@ const registerUser = asyncHandler(async (req, res) => {
     console.log(req.file);
     // const avatarLocalPath = req.files?.avatar[0]?.path;
     const avatarLocalPath = req.file?.path;
-    if (!avatarLocalPath) throw new ApiError(400, "Avatar file is missing");
-  
-    const avatar = await uploadOnCloudinary(avatarLocalPath);
-    if (!avatar.url) {
-      throw new ApiError(400, "Error while uploading avatar");
+    // if (!avatarLocalPath) throw new ApiError(400, "Avatar file is missing");
+    let avatar;
+    if(avatarLocalPath){
+      avatar = await uploadOnCloudinary(avatarLocalPath);
+      if (!avatar.url) {
+        throw new ApiError(400, "Error while uploading avatar");
+      }
     }
+    
     // const coverImageLocalPath = req.files?.coverImage[0]?.path;
     
-    if (!avatar) throw new ApiError(400, "Avatar files is required");
+    // if (!avatar) throw new ApiError(400, "Avatar files is required");
   
     const user = await User.create({
-      fullname,
-      avatar: avatar.url,
+      name,
+      avatar: avatar?.url || "",
       email,
       password,
       username: username.toLowerCase(),
@@ -207,8 +210,8 @@ const registerUser = asyncHandler(async (req, res) => {
   });
 
   const updateAccount = asyncHandler(async (req, res) => {
-    const { fullname, email } = req.body;
-    if (!fullname || !email) {
+    const { name, email } = req.body;
+    if (!name || !email) {
       throw new ApiError(400, "All Fields are required");
     }
   
@@ -216,7 +219,7 @@ const registerUser = asyncHandler(async (req, res) => {
       req.user?._id,
       {
         $set: {
-          fullname: fullname,
+          name: name,
           email: email,
         },
       },
