@@ -2,7 +2,7 @@ import React from 'react'
 import ReactDOM from 'react-dom/client'
 import './index.css'
 import { RouterProvider, createBrowserRouter} from 'react-router-dom'
-import PostList from './pages/PostList.jsx'
+import PostListPage from './pages/PostListPage.jsx'
 import HomePage from './pages/HomePage.jsx'
 import SinglePostPage from './pages/SinglePostPage.jsx'
 import WritePage from './pages/WritePage.jsx'
@@ -27,7 +27,7 @@ const router = createBrowserRouter([
       },
       {
         path: '/posts',
-        element: <PostList/>
+        element: <PostListPage/>
       },
       {
         path:'/:slug',
